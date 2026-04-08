@@ -102,14 +102,14 @@ export const testApiKey = async (apiKey: string, type: 'text' | 'image'): Promis
   try {
     // Thử model chính trước
     try {
-      await tryModel("gemini-3-flash-preview");
+      await tryModel("gemini-2.5-flash");
     } catch (e: any) {
       // Nếu server bận (503), đợi 2 giây rồi thử lại model chính
       if (e.message?.includes("503") || e.message?.includes("UNAVAILABLE")) {
         console.warn(`[KeyService] Primary model busy, retrying in 2s...`);
         await new Promise(r => setTimeout(r, 2000));
         try {
-          await tryModel("gemini-3-flash-preview");
+          await tryModel("gemini-2.5-flash");
         } catch (e2: any) {
           // Nếu vẫn bận, thử model fallback 1
           console.warn(`[KeyService] Primary model still busy, trying fallback 1 (1.5-flash)...`);
