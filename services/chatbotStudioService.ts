@@ -33,7 +33,7 @@ export const sendMessage = async (
 
     return callWithAiFallback(async (ai) => {
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.5-flash",
         contents,
         config: {
           systemInstruction,
@@ -148,7 +148,7 @@ export const sendMessage = async (
 
   return callWithAiFallback(async (ai) => {
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.5-flash",
       contents,
       config: {
         systemInstruction,
